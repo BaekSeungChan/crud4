@@ -35,6 +35,10 @@ public class TeacherServiceImpl implements TeacherService {
         return teachers.stream().map((teacher) -> modelMapper.map(teacher, TeacherDto.class)).collect(Collectors.toList());
     }
 
-
+    @Override
+    public TeacherDto getTeacherById(long id) {
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+        return modelMapper.map(teacher, TeacherDto.class);
+    }
 
 }

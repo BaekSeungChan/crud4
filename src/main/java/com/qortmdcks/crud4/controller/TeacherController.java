@@ -27,4 +27,9 @@ public class TeacherController {
     public ResponseEntity<List<TeacherDto>> getALTeacher(){
         return ResponseEntity.ok(teacherService.getALTeacher());
     }
+
+    @GetMapping("/{id}")
+    public  ResponseEntity<TeacherDto> getTeacherById(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok(teacherService.getTeacherById(id));
+    }
 }

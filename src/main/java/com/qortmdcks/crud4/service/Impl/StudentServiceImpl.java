@@ -37,4 +37,11 @@ public class StudentServiceImpl implements StudentService {
         return students.stream().map((student) -> modelMapper.map(student, StudentDto.class)).collect(Collectors.toList());
 
     }
+
+    @Override
+    public StudentDto getStudentById(long id){
+        Student student = studentRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+
+        return modelMapper.map(student, StudentDto.class);
+    }
 }

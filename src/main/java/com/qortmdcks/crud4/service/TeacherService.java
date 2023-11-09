@@ -10,4 +10,6 @@ public interface TeacherService {
     TeacherDto createTeacher(TeacherDto teacherDto);
 
     List<TeacherDto> getALTeacher();
+
+    TeacherDto getTeacherById(long id);
 }
