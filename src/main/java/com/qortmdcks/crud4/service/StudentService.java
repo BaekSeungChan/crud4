@@ -1,4 +1,7 @@
 package com.qortmdcks.crud4.service;
 
-public class StudentService {
+import com.qortmdcks.crud4.payload.StudentDto;
+
+public interface StudentService {
+    StudentDto createStudent(StudentDto studentDto);
 }

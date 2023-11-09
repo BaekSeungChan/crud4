@@ -1,4 +1,7 @@
 package com.qortmdcks.crud4.repository;
 
-public class StudentRepository {
+import com.qortmdcks.crud4.entity.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentRepository extends JpaRepository<Student, Long> {
 }
