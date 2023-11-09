@@ -7,6 +7,9 @@ import com.qortmdcks.crud4.service.TeacherService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
@@ -25,6 +28,13 @@ public class TeacherServiceImpl implements TeacherService {
 
         return modelMapper.map(saveTeacher, TeacherDto.class);
     }
+
+    @Override
+    public List<TeacherDto> getALTeacher(){
+        List<Teacher> teachers = teacherRepository.findAll();
+        return teachers.stream().map((teacher) -> modelMapper.map(teacher, TeacherDto.class)).collect(Collectors.toList());
+    }
+
 
 
 }

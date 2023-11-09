@@ -8,6 +8,9 @@ import com.qortmdcks.crud4.service.StudentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
@@ -25,5 +28,13 @@ public class StudentServiceImpl implements StudentService {
         Student savedStudent = studentRepository.save(student);
 
         return modelMapper.map(savedStudent, StudentDto.class);
+    }
+
+    @Override
+    public List<StudentDto> getAllStudent(){
+        List<Student> students = studentRepository.findAll();
+
+        return students.stream().map((student) -> modelMapper.map(student, StudentDto.class)).collect(Collectors.toList());
+
     }
 }

@@ -5,10 +5,9 @@ import com.qortmdcks.crud4.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/student")
@@ -22,5 +21,10 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<StudentDto> createStudent(@Valid @RequestBody StudentDto studentDto){
         return new ResponseEntity<>(studentService.createStudent(studentDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<StudentDto>> getAllStudent(){
+        return ResponseEntity.ok(studentService.getAllStudent());
     }
 }
