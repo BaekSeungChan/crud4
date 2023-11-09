@@ -12,4 +12,6 @@ public interface TeacherService {
     List<TeacherDto> getALTeacher();
 
     TeacherDto getTeacherById(long id);
+
+    void deleteTeacherById(long id);
 }

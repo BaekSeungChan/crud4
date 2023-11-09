@@ -32,4 +32,9 @@ public class TeacherController {
     public  ResponseEntity<TeacherDto> getTeacherById(@PathVariable(name = "id") long id){
         return ResponseEntity.ok(teacherService.getTeacherById(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTeacherById(@PathVariable(name = "id") long id){
+        return new ResponseEntity<>("deleted post", HttpStatus.OK);
+    }
 }

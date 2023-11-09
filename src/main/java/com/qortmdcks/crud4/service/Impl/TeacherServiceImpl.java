@@ -41,4 +41,9 @@ public class TeacherServiceImpl implements TeacherService {
         return modelMapper.map(teacher, TeacherDto.class);
     }
 
+    @Override
+    public void deleteTeacherById(long id){
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(()-> new RuntimeException("No id"));
+        teacherRepository.delete(teacher);
+    }
 }
