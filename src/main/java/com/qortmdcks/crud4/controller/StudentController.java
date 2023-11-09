@@ -1,5 +1,6 @@
 package com.qortmdcks.crud4.controller;
 
+import com.qortmdcks.crud4.entity.Student;
 import com.qortmdcks.crud4.payload.StudentDto;
 import com.qortmdcks.crud4.service.StudentService;
 import jakarta.validation.Valid;
@@ -35,6 +36,13 @@ public class StudentController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable(name = "id") long id){
+        studentService.deleteStudentById(id);
         return new ResponseEntity<>("deleted post", HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDto> updateParent(@PathVariable(name = "id") long id, @Valid @RequestBody StudentDto studentDto){
+        StudentDto studentResponse = studentService.updateStudent(studentDto, id);
+        return new ResponseEntity<>(studentResponse, HttpStatus.OK);
     }
 }

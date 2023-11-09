@@ -46,4 +46,17 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = teacherRepository.findById(id).orElseThrow(()-> new RuntimeException("No id"));
         teacherRepository.delete(teacher);
     }
+
+    @Override
+    public TeacherDto updateParent(TeacherDto teacherDto, long id){
+        Teacher teacher = teacherRepository.findById(id).orElseThrow(()-> new RuntimeException("No id"));
+
+        teacher.setName(teacherDto.getName());
+        teacher.setAge(teacherDto.getAge());
+        teacher.setSubject(teacherDto.getSubject());
+
+        Teacher updateTeacher = teacherRepository.save(teacher);
+
+        return modelMapper.map(updateTeacher, TeacherDto.class);
+    }
 }

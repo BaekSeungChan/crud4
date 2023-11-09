@@ -14,4 +14,6 @@ public interface TeacherService {
     TeacherDto getTeacherById(long id);
 
     void deleteTeacherById(long id);
+
+    TeacherDto updateParent(TeacherDto teacherDto, long id);
 }

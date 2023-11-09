@@ -35,6 +35,14 @@ public class TeacherController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTeacherById(@PathVariable(name = "id") long id){
+        teacherService.deleteTeacherById(id);
         return new ResponseEntity<>("deleted post", HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TeacherDto> updateParent(@PathVariable(name = "id") long id, @Valid @RequestBody TeacherDto teacherDto){
+        TeacherDto parentResponse = teacherService.updateParent(teacherDto, id);
+        return new ResponseEntity<>(parentResponse, HttpStatus.OK);
+    }
+
 }

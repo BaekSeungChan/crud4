@@ -51,5 +51,18 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.delete(student);
     }
 
+    @Override
+    public StudentDto updateStudent(StudentDto studentDto, long id){
+        Student student = studentRepository.findById(id).orElseThrow(()-> new RuntimeException("No id"));
+
+        student.setName(studentDto.getName());
+        student.setAge(studentDto.getAge());
+        student.setHighschool(studentDto.getHighschool());
+
+        Student updateStudent = studentRepository.save(student);
+
+        return modelMapper.map(updateStudent, StudentDto.class);
+    }
+
 
 }
